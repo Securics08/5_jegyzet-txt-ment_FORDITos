@@ -45,7 +45,7 @@ button,select,input{background:#000;color:var(--text);border:1px solid var(--bor
     word-wrap: break-word; 
     margin: 0; 
     overflow-y: auto;
-    font-family: inherit; /* Biztosítja az azonos betűtípust mindkét rétegen */
+    font-family: Arial, sans-serif; /* Alapértelmezett Arial betűtípus */
 }
 
 #editor { 
@@ -224,6 +224,7 @@ function exportJSON(){
 const fontDropdown = document.getElementById('fontFamily');
 rawFonts.sort().forEach((f, index) => {
     let o = document.createElement('option'); o.value = f; o.textContent = `${index + 1}. ${f}`; o.style.fontFamily = f; o.style.color = fontColors[index % fontColors.length];
+    if (f === "Arial") o.selected = true; // Arial kiválasztása alapértelmezettként
     fontDropdown.appendChild(o);
 });
 
@@ -265,6 +266,7 @@ function searchText(){
 
 refresh();
 updateStyles();
+changeFont(); // Kezdeti font beállítása Arialra
 </script>
 </body>
 </html>
